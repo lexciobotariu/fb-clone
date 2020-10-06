@@ -10,8 +10,12 @@ import AddIcon from "@material-ui/icons/Add";
 import ForumIcon from "@material-ui/icons/Forum";
 import NotificationsActiveIcon from "@material-ui//icons/NotificationsActive";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
+import { useStateValue } from '../StateProvider';
 
 function Header() {
+
+  const [{ user }, dispatch] = useStateValue();
+
   return (
     <div className="header">
       {/* This part is for the left side of the header */}
@@ -46,8 +50,8 @@ function Header() {
       {/* This part is for the right side of the header */}
       <div className="header__right">
         <div className="header__info">
-          <Avatar />
-          <h4>Lex Ciobotariu</h4>
+          <Avatar src={user.photoURL}/>
+          <h4>{user.displayName}</h4>
         </div>
         {/* Here are all the icons in the right side of the header */}
          <IconButton>
